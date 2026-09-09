@@ -1,0 +1,419 @@
+
+/* ================= Unified Design System ================= */
+:root {
+  /* Refined color palette - harmonious */
+  --brand-red: #c41e3a;
+  --brand-red-dark: #9a1729;
+  --brand-red-light: #d63447;
+  --bg-main: #ffffff;
+  --bg-light: #f8f9fa;
+  --bg-accent: #fef6f7;
+  --text-main: #2c3e50;
+  --text-muted: #5a6c7d;
+  --text-light: #7f8c9a;
+  --card-shadow: rgba(196, 30, 58, 0.08);
+  --card-shadow-hover: rgba(196, 30, 58, 0.16);
+
+  /* Layout - consistent */
+  --max-width: 1100px;
+  --gap: 20px;
+  --gap-sm: 12px;
+  --gap-lg: 32px;
+
+  /* Components - unified */
+  --header-height: 88px;
+  --header-height-sm: 72px;
+  --card-radius: 16px;
+  --card-radius-sm: 12px;
+  --card-radius-lg: 20px;
+
+  /* Transitions - consistent */
+  --transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================= Global Reset ================= */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  height: 100%;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Accessible focus outline - unified */
+:focus {
+  outline: 2px solid var(--brand-red-light);
+  outline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--brand-red-light);
+  outline-offset: 3px;
+}
+
+/* ================= HEADER (from about website) ================= */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background: var(--brand-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  z-index: 1000;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.header-left,
+.header-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  left: 24px;
+}
+
+.header-right {
+  right: 24px;
+}
+
+.header-left .logo {
+  height: 64px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.header-nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.header-nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: all var(--transition-base);
+  display: inline-block;
+}
+
+.header-nav a:focus,
+.header-nav a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+/* ================= BACKGROUND SECTION ================= */
+.acknowledgement-section {
+  position: relative;
+  margin-top: var(--header-height);
+  min-height: calc(100vh - var(--header-height));
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+}
+
+/* Background image layer */
+.acknowledgement-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("../assets/pictures/photo collage.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+/* Overlay layer */
+.acknowledgement-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(196, 30, 58, 0.35),
+    rgba(196, 30, 58, 0.15)
+  );
+}
+
+/* ================= CONTENT ================= */
+.acknowledgement-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+/* ================= LOGO STRIP ================= */
+.logo-strip {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo-strip img {
+  height: 110px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+  transition: transform var(--transition-base), filter var(--transition-base);
+}
+
+.logo-strip img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+}
+
+/* ================= THANK YOU CARD ================= */
+.thankyou-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 60px 70px;
+  border-radius: var(--card-radius-lg);
+  max-width: 880px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.thankyou-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+}
+
+.thankyou-card h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+  color: var(--brand-red);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.thankyou-divider {
+  width: 100px;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    #2ecc71 0 20px,
+    #e74c3c 20px 40px,
+    #3498db 40px 60px,
+    #f1c40f 60px 80px,
+    #9b59b6 80px 100px
+  );
+  margin: 0 auto 28px;
+  border-radius: 2px;
+}
+
+.thankyou-card p {
+  font-size: 1.15rem;
+  color: var(--text-main);
+  line-height: 1.85;
+  font-weight: 400;
+}
+
+.thankyou-card p strong {
+  color: var(--brand-red);
+  font-weight: 600;
+}
+
+/* ================= FOOTER (from about website) ================= */
+footer {
+  background: var(--text-main);
+  color: #fff;
+  padding: 60px 0 32px;
+  text-align: center;
+  position: relative;
+  margin-top: 0;
+  z-index: 10;
+}
+
+.footer-seal {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.footer-copy {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.footer-sub {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  body {
+    padding-top: var(--header-height-sm);
+  }
+
+  header {
+    height: var(--header-height-sm);
+  }
+
+  .header-left .logo {
+    height: 56px;
+  }
+
+  .header-nav {
+    font-size: 14px;
+    gap: 6px;
+  }
+
+  .header-nav a {
+    padding: 8px 12px;
+  }
+
+  .acknowledgement-section {
+    margin-top: var(--header-height-sm);
+    padding: 60px 20px;
+  }
+
+  .acknowledgement-content {
+    gap: 45px;
+  }
+
+  .thankyou-card {
+    padding: 45px 40px;
+  }
+
+  .thankyou-card h1 {
+    font-size: 2.5rem;
+  }
+
+  .thankyou-card p {
+    font-size: 1.05rem;
+  }
+
+  .logo-strip {
+    gap: 32px;
+  }
+
+  .logo-strip img {
+    height: 90px;
+  }
+}
+
+@media (max-width: 600px) {
+  .acknowledgement-section {
+    padding: 40px 15px;
+  }
+
+  .thankyou-card {
+    padding: 35px 25px;
+  }
+
+  .thankyou-card h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .thankyou-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .thankyou-divider {
+    width: 80px;
+  }
+
+  .logo-strip {
+    gap: 24px;
+  }
+
+  .logo-strip img {
+    height: 70px;
+  }
+}
+
+/* ================= Scrollbar styling for consistency ================= */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-red-light);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-red);
+}
+/* Keep the acknowledgement image flush beneath the fixed header. */
+@media (max-width: 900px) {
+  .acknowledgement-section {
+    margin-top: 0;
+    min-height: calc(100dvh - var(--header-height-sm));
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-top: 64px;
+  }
+
+  .acknowledgement-section {
+    min-height: calc(100dvh - 64px);
+  }
+}

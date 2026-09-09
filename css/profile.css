@@ -1,0 +1,512 @@
+
+/* ================= GLOBAL ================= */
+:root {
+  --red: #b00000;
+  --dark-red: #8b0000;
+  --light-bg: #f8f8f8;
+  --brand-red: #c41e3a;
+  --brand-red-dark: #9a1729;
+  --brand-red-light: #d63447;
+  --text-main: #2c3e50;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--light-bg);
+  color: #111;
+  overflow-x: hidden;
+}
+
+/* ================= HEADER (matching about website) ================= */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 88px;
+  background: var(--brand-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  z-index: 1000;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.header-left,
+.header-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  left: 24px;
+}
+
+.header-right {
+  right: 24px;
+}
+
+.header-left .logo {
+  height: 64px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.header-nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.header-nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+}
+
+.header-nav a:focus,
+.header-nav a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+/* ================= PAGE HERO ================= */
+.hero-section {
+  margin-top: 88px;
+  background: linear-gradient(135deg, var(--red) 0%, var(--dark-red) 100%);
+  padding: 80px 20px 70px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.hero-content p {
+  font-size: 19px;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* ================= ORG CHART CONTAINER ================= */
+.org-chart-section {
+  padding: 80px 20px 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ================= CARD STYLES ================= */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.org-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 36px 28px 34px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.org-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--red), var(--dark-red));
+}
+
+.org-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 45px rgba(176,0,0,0.18);
+}
+
+.photo-frame {
+  width: 180px;
+  height: 240px;
+  margin: 0 auto 24px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 4px solid var(--red);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18), 0 0 0 2px rgba(255,255,255,0.5);
+  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-frame:hover {
+  transform: scale(1.05);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25), 0 0 0 2px rgba(255,255,255,0.8);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.photo-frame i {
+  font-size: 64px;
+  color: #ccc;
+}
+
+.member-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 8px;
+  font-family: 'Playfair Display', serif;
+}
+
+.member-role {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 18px;
+}
+
+.member-quote {
+  font-size: 15px;
+  font-style: italic;
+  color: #555;
+  line-height: 1.7;
+  padding: 0 12px;
+  position: relative;
+}
+
+.member-quote::before {
+  content: '"';
+  font-size: 48px;
+  position: absolute;
+  left: -8px;
+  top: -12px;
+  color: rgba(176,0,0,0.2);
+  font-family: Georgia, serif;
+}
+
+/* ================= HIERARCHY LEVELS ================= */
+
+/* PRINCIPAL - single, largest */
+.principal-level {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.principal-level .org-card {
+  width: 380px;
+  padding: 50px 40px 44px;
+}
+
+.principal-level .photo-frame {
+  width: 220px;
+  height: 290px;
+  border-width: 5px;
+  border-radius: 18px;
+}
+
+.principal-level .member-name {
+  font-size: 28px;
+}
+
+.principal-level .member-role {
+  font-size: 16px;
+  letter-spacing: 1.4px;
+}
+
+.principal-level .member-quote {
+  font-size: 16px;
+}
+
+/* ADVISERS - 2 cards */
+.advisers-level {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+.advisers-level .org-card {
+  width: 100%;
+}
+
+.advisers-level .photo-frame {
+  width: 190px;
+  height: 250px;
+  border-radius: 16px;
+}
+
+/* OFFICERS - 4 cards */
+.officers-level {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  max-width: 1300px;
+  margin: 0 auto 60px;
+}
+
+.officers-level .org-card {
+  width: 100%;
+}
+
+.officers-level .photo-frame {
+  width: 160px;
+  height: 210px;
+  border-radius: 14px;
+}
+
+.officers-level .member-name {
+  font-size: 20px;
+}
+
+/* MEMBERS - 6 cards */
+.members-level {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.members-level .org-card {
+  width: 100%;
+}
+
+.members-level .photo-frame {
+  width: 150px;
+  height: 200px;
+  border-width: 3px;
+  border-radius: 14px;
+}
+
+.members-level .member-name {
+  font-size: 19px;
+}
+
+.members-level .member-role {
+  font-size: 13px;
+}
+
+.members-level .member-quote {
+  font-size: 14px;
+}
+
+/* ================= SECTION HEADERS ================= */
+.level-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.level-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+
+.level-header .divider {
+  width: 80px;
+  height: 4px;
+  background: var(--red);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+/* ================= CONNECTING LINES (decorative) ================= */
+.connection-lines {
+  position: relative;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 40px;
+}
+
+.connection-lines::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--red), transparent);
+  top: -20px;
+}
+
+/* ================= FOOTER (matching about website) ================= */
+footer {
+  background: var(--text-main);
+  color: #fff;
+  padding: 60px 0 32px;
+  text-align: center;
+  position: relative;
+  margin-top: 0;
+}
+
+.footer-seal {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.footer-copy {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.footer-sub {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1200px) {
+  .officers-level {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header-nav {
+    font-size: 14px;
+    gap: 6px;
+  }
+
+  .header-nav a {
+    padding: 8px 12px;
+  }
+  
+  header {
+    height: 72px;
+  }
+  
+  .header-left .logo {
+    height: 56px;
+  }
+  
+  .hero-section {
+    margin-top: 72px;
+  }
+  
+  .hero-content h1 {
+    font-size: 42px;
+  }
+  
+  .advisers-level {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+  }
+  
+  .officers-level {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+  }
+  
+  .members-level {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-content h1 {
+    font-size: 34px;
+  }
+  
+  .principal-level .org-card {
+    width: 100%;
+    max-width: 380px;
+  }
+  
+  .level-header h2 {
+    font-size: 28px;
+  }
+}
+
+/* ================= Scrollbar styling for consistency ================= */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-red-light);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-red);
+}
